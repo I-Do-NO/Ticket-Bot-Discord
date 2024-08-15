@@ -85,16 +85,6 @@ async def on_ready():
     change_status.start()
     print(f'Logged in as {bot.user}')
 
-@tasks.loop(seconds=7)
-async def change_status():
-    statuses = [
-        discord.Game("gg/nnYRwcBv5F"),
-        discord.Game("Ticket!")
-    ]
-    for status in statuses:
-        await bot.change_presence(activity=status)
-        await asyncio.sleep(7)
-
 @bot.command()
 async def ticket(ctx):
     view = TicketView()
